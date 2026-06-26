@@ -28,9 +28,6 @@ This is the live counterpart to the evaluation pipeline used to benchmark detect
 
 The recommended deployable configuration that came out of the eval is **RCNN + Surya (digits) + base TrOCR (names/words)** with the no-slash Date specialist as a TrOCR alternative.
 
-## Key result from the eval
-
-Fine-tuning TrOCR on synthetic cheque crops helped only the fields where the base model was structurally weak (digit recognition: Date CER 0.42 → 0.02) and **degraded** the fields where the base was already strong (Name 0.19 → 0.59, Amount-in-Words 0.20 → 0.48). Further fine-tuning on real IDRBT crops did not recover the word fields. The portal lets you see this directly by comparing engines on any cheque.
 
 ## Install (local)
 
