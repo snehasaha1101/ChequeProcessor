@@ -1,12 +1,8 @@
+# ChequeProcessor
 
-help me show the two images in parallelA handwritten-cheque field extraction portal. Detects the four key fields on an Indian bank cheque — **Date, Payee Name, Amount in Words, Amount in Numbers** — then reads each with the OCR engine of your choice and shows the outputs side by side for comparison.
+A handwritten-cheque field extraction portal. Detects the four key fields on an Indian bank cheque — **Date, Payee Name, Amount in Words, Amount in Numbers** — then reads each with the OCR engine of your choice and shows the outputs side by side for comparison.
 
-
-<img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/5d8bf48d-0a24-4f73-a934-1c9f4c6d1d1a" />
-<img width="959" height="538" alt="image" src="https://github.com/user-attachments/assets/f140ce07-db04-478a-970e-611948c8ae3b" />
-
-
-
+<img width="959" height="539" alt="image" src="https://github.com/user-attachments/assets/5d8bf48d-0a24-4f73-a934-1c9f4c6d1d1a" /> <img width="959" height="538" alt="image" src="https://github.com/user-attachments/assets/f140ce07-db04-478a-970e-611948c8ae3b" />
 ## What it does
 
 Upload a cheque image, pick a detector and one or more OCR engines, and the portal:
@@ -32,7 +28,9 @@ This is the live counterpart to the evaluation pipeline used to benchmark detect
 
 The recommended deployable configuration that came out of the eval is **RCNN + Surya (digits) + base TrOCR (names/words)** with the no-slash Date specialist as a TrOCR alternative.
 
+## Key result from the eval
 
+Fine-tuning TrOCR on synthetic cheque crops helped only the fields where the base model was structurally weak (digit recognition: Date CER 0.42 → 0.02) and **degraded** the fields where the base was already strong (Name 0.19 → 0.59, Amount-in-Words 0.20 → 0.48). Further fine-tuning on real IDRBT crops did not recover the word fields. The portal lets you see this directly by comparing engines on any cheque.
 
 ## Install (local)
 
